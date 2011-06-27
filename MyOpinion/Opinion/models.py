@@ -3,7 +3,7 @@ from django.db import models
 
 
 
-# Create your models here.
+# Create your models here.!!!!
 class Opinion(models.Model):
 	title=models.CharField(max_length=60)
 	body=models.TextField()
