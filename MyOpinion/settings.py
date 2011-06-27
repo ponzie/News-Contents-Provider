@@ -99,12 +99,13 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'Opinion.urls'
+ROOT_URLCONF = 'MyOpinion.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    "/home/aiti/Desktop/News-Contents-Provider/MyOpinion/templates"
 )
 
 INSTALLED_APPS = (

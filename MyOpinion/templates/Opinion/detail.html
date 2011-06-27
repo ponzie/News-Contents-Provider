@@ -1,16 +1,16 @@
-{% extends "Opinion/home.html" %}
-     {% block content %}
-     {{ blog.title }}, {{ blog.body }},{{ blog.created }}, {{ blog.like }}
-{% for c in comments %}      
- 	{{ c.author }}, {{ c.body }},{{ c.created }}, {{ c.updated }}
+{% extends "Opinion/base.html" %}
+{% block content %}
+	{{ blog.title }}, {{ blog.body }},{{ blog.created }}, {{ blog.like }}
+	{% for c in comments %}      
+	 	{{ c.author }}, {{ c.body }},{{ c.created }}, {{ c.updated }}
 
-	<div><a href="/Opinion/editcomment/{{ c.id }}/">Edit Comment</a></div>
-{% endfor %}
-	<br />
-	<div>New Comment</div>
-	<form method='post' action="">
-	{{ form }}
-	<input type='submit' name='Submit'>
-	</form>
+		<div><a href="/Opinion/editcomment/{{ c.id }}/">Edit Comment</a></div>
+	{% endfor %}
+		<br />
+		<div>New Comment</div>
+		<form method='post' action="">
+		{{ form }}
+		<input type='submit' name='Submit'>
+		</form>
 
-      {% endblock %}
+{% endblock %}

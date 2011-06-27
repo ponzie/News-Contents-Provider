@@ -6,14 +6,14 @@
      <title>News Contents Provider</title>
 </head>
 <body>
-     <a href="/Opinion/Opinion_detail"><h1>Sports</h1></a>
-     <a href="/Opinion/Opinion_detail"><h1>Education</h1></a>
-     <a href="/Opinion/Opinion_detail"><h1>Politics</h1></a>
-     <a href="/Opinion/Opinion_detail"><h1>Entertainment</h1></a>
-     <a href="/Opinion/Opinion_detail"><h1>Weather</h1></a>
-     <div id="content">
-      {% block content %}
-      {% endblock %}
-  </div>
+
+		
+	<div id="content">
+	{% block content %}
+	{% for cat in categories %}
+	<a href="/Opinion/list/{{cat.id}}"><h1>{{cat.title}}</h1></a>
+	{%endfor%}
+	{% endblock %}
+	</div>
 </body>
 </html>

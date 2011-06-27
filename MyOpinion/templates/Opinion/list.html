@@ -1,12 +1,12 @@
 {% extends  "Opinion/base.html" %}
 {% block content %}
 
-{% for blog in blog_list %}
-	<h2><a href="/Opinion/detail/{{ blog.id }}/True">{{ blog.title}}</a></h2>
+{% for op in opinion_list %}
+	<h2><a href="/Opinion/detail/{{ op.id }}/True">{{ op.title}}</a></h2>
 	<ul>
-	   <div>Created: {{ blog.created }}</div>
-           <div>Last updated: {{ blog.updated }}</div>
-           <div>{{ blog.body|linebreaks }}</div>
+	   <div>Created: {{ op.created }}</div>
+           <div>Last updated: {{ op.updated }}</div>
+           <div>{{ op.body|linebreaks }}</div>
 	</ul>
 {% endfor %}
 {% endblock %}

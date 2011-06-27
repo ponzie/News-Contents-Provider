@@ -3,9 +3,13 @@ from django.forms import ModelForm
 from django.views.decorators.csrf import csrf_exempt
 from django.template import Context, loader
 from django.http import HttpResponse,HttpResponseRedirect
-from models import Opinion, Comment
+from models import Opinion, Comment, Category
 
-
+def Opinion_list(request, id):
+	opinion_list = Opinion.objects.filter(id=id)
+	t = loader.get_template('Opinion/list.html')
+	c = Context({'opinion_list':opinion_list})
+	return HttpResponse(t.render(c))
 
 class CommentForm(ModelForm):
 	class Meta:
@@ -16,6 +20,7 @@ def Opinion_detail(request, id, showComments=False):
 	
 	blog = Opinion.objects.get(pk=id)
 	print blog.id,blog.author, blog.title, blog.body
+	comments = None
 	if showComments:
 		comments = Comment.objects.filter(link__pk=id)
 	if request.method == 'POST':
@@ -27,18 +32,17 @@ def Opinion_detail(request, id, showComments=False):
 	else:
 		form = CommentForm()
 	t = loader.get_template('Opinion/detail.html')
-	c = Context({'Have your say':blog, 'comments':comments,'form':form.as_p()})
+	c = Context({'blog':blog, 'comments':comments,'form':form.as_p()})
 	return HttpResponse(t.render(c))
 
 
 @csrf_exempt
-def Opinion_avgRating(request,id)
+def Opinion_avgRating(request,id):
 	count=0
 	blog = Opinion.objects.get(pk=id)
 	if blog.like :
 		count=count+1
-        else:
- 		continue
+       
 	t = loader.get_template('Opinion/avgRating.html')
 	c = Context({'Have your say':blog, 'count':count,'form':form.as_p()})
 	return HttpResponse(t.render(c))
@@ -53,17 +57,18 @@ def Opinion_editcomment(request, id):
 		form = CommentForm(instance=comment)
 	t = loader.get_template('Opinion/detail.html')
 	c = Context({'form':form.as_p()})
-	return HttpResponse(t.render(c)
-def home(request)
-    t = loader.get_template('Opinion/home.html')
-    c = Context(dict())
-    return HttpResponse(t.render(c))
+	return HttpResponse(t.render(c))
+def home(request):
+	categories = Category.objects.all()
+	t = loader.get_template('Opinion/base.html')
+	c = Context({'categories':categories})
+	return HttpResponse(t.render(c))
 
 
-def search(request,term)
+def search(request,term):
     opinion_list = Opinion.object.filter(title__icontains=term)
     t = loader.get_template('Opinion/search.html')
     c = Context({'opinion_list':opinion_list , 'term':term })
-    for opinion in opinion_list 
+    for opinion in opinion_list: 
         print Opinion.title
     return HttpResponse(t.render(c))
