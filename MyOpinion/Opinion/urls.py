@@ -1,17 +1,9 @@
-from django.conf.urls.defaults import patterns, include, url
-
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+from django.conf.urls.defaults import *
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'Opinion.views.home', name='home'),
-    # url(r'^Opinion/', include('Opinion.foo.urls')),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
-)
+	url(r'^$', 'Opinion.views.home'),
+	url(r'^(detail|info)/(?P<id>\d+)/((?P<showComments>.*)/)?$', 'Opinion.views.Opinion_detail'),
+	url(r'^search/(.)+$','Opinion.views.search'),
+	url(r'^editcomment/(?P<id>\d+)/$','Opinion.views.Opinion_editcomment'),
+	url(r'^rating/(?P<id>\d+)/$','Opinion.views.Opinion_avgRating'),
+	)

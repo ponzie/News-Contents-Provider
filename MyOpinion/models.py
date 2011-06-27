@@ -14,15 +14,9 @@ class Opinion(models.Model):
 		return self.title
 
 
-class OpinionAdmin(admin.ModelAdmin):
-	list_display = ('title','created','updated','like')
-	list_filter = ('created',)
-	search_fields = ('title','body')
-	inlines = [CommentInline]
-	def __unicode__(self):
-		return self.list_display 
 
-	
+class CommentInline(admin.TabularInline):
+	model = Comment	
 class Comment(models.Model):
 	body=  models.TextField()
         author=models.CharField(max_length=60)
@@ -32,10 +26,16 @@ class Comment(models.Model):
 	def __unicode__(self):
 		return str(self.post)+","+self.author
 	def body_first_70(self):
-		return self.body[:60]
+		return self.body[:70]
 
-class CommentInline(admin.TabularInline):
-	model = Comment
+
+class OpinionAdmin(admin.ModelAdmin):
+	list_display = ('title','created','updated','like')
+	list_filter = ('created',)
+	search_fields = ('title','body')
+	inlines = [CommentInline]
+	def __unicode__(self):
+		return self.list_display 
 
 class CommentAdmin(admin.ModelAdmin):
 	list_display=('link','author','created','updated')
