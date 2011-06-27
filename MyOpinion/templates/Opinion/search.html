@@ -1,0 +1,14 @@
+{% extends "Opinion/base.html" %}
+  {% block content %}
+     <div>
+        <h1><b> SEARCH RESULTS<b> </h1>
+     <ul>
+	{% for blog in blog_list%}
+	 <li>{{blog.title}}</li>
+         <br>
+	{% endfor%}  
+   </ul>
+   </div>
+  {% endblock %}
+
+
