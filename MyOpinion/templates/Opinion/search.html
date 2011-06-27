@@ -1,0 +1,7 @@
+{% extends "Opinion/base.html" %}
+  {% block content %}
+	{% for Opinion in Opinion_list%}
+		{{Opinion.title}}
+	{% endfor%}  
+  {% endblock %}
+
