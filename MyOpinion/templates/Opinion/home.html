@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+     <title>News Contents Provider</title>
+</head>
+<body>
+   <div>
+   <ul>
+     <li><a href="/Opinion/list"><h1>Sports</h1></a></li>
+     <li><a href="/Opinion/list"><h1>Entertainment</h1></a></li>
+     <li><a href="/Opinion/list"><h1>Education</h1></a></li>
+     <li><a href="/Opinion/list"><h1>Politics</h1></a></li>
+     <li><a href="/Opinion/list"><h1>Weather</h1></a></li>
+     <li><div id="content">
+   </ul>
+    </div>
+      {% block content %}
+      {% endblock %}
+  </div>
+</body>
+</html>
+

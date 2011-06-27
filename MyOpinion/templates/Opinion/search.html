@@ -1,7 +1,22 @@
 {% extends "Opinion/base.html" %}
   {% block content %}
+<<<<<<< HEAD
 	{% for Opinion in Opinion_list%}
 		{{Opinion.title}}
 	{% endfor%}  
   {% endblock %}
 
+=======
+     <div>
+        <h1><b> SEARCH RESULTS<b> </h1>
+     <ul>
+	{% for blog in blog_list%}
+	 <li>{{blog.title}}</li>
+         <br>
+	{% endfor%}  
+   </ul>
+   </div>
+  {% endblock %}
+
+
+>>>>>>> 566778f046f25ad8e0734d17d329cb49d946f7b9
